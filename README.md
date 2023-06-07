@@ -1,7 +1,7 @@
 # explode-localhost
 Explode your localhost to internet
 
-## Usage
+### Usage
 
 ```
 bash explode.sh
