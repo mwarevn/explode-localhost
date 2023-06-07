@@ -1,8 +1,8 @@
-# explode-localhost
-Explode your localhost to internet
+# expose-localhost
+Expose your localhost to internet
 
 ### Usage
 
 ```
-bash explode.sh
+bash expose.sh
 ```
