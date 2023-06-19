@@ -120,7 +120,7 @@ echo $line
 echo "Your local host is: http://$localhost"
 echo "Starting expose your localhost"
 
-./expose tunnel -url $localhost
+./expose tunnel -url http://$localhost
 
 }
 
