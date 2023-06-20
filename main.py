@@ -2,7 +2,7 @@ import platform
 import urllib.request
 import os
 
-architecture = platform.architecture()[0]
+architecture = platform.machine()
 
 def tunnel(ip, port):
     print("Starting server cloudflared...")
