@@ -4,5 +4,5 @@ Expose your localhost to internet
 ### Usage
 
 ```
-bash expose.sh
+python3 main.py
 ```
