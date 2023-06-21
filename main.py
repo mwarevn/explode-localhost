@@ -12,15 +12,6 @@ def kill_process_by_name(process_name):
             return True
     return False
 
-# Example usage
-process_name = "php"
-success = kill_process_by_name(process_name)
-if success:
-    print(f"Successfully killed process with name '{process_name}'.")
-else:
-    print(f"No process found with name '{process_name}'.")
-
-
 kill_process_by_name("cloudflared")
 architecture = platform.machine()
 
