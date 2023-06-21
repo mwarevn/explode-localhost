@@ -8,12 +8,15 @@ import signal
 import sys
 
 def kill_process_by_name(process_name):
-    if os.path.exists('cloudflared.json'):
-        os.remove('cloudflared.json')
+    log_file = 'server.log'
+    if os.path.exists(log_file):
+        os.remove(log_file)
+    
     for proc in psutil.process_iter(['pid', 'name']):
         if proc.info['name'] == process_name:
             proc.terminate()
             return True
+    
     return False
 
 kill_process_by_name("cloudflared")
@@ -27,20 +30,22 @@ signal.signal(signal.SIGINT, exit_handler)
 architecture = platform.machine()
 
 def tunnel(ip, port):
-    print("Starting server cloudflared...")
-    os.system(f"./cloudflared tunnel -url {ip}:{port} --logfile cloudflared.json > /dev/null 2>&1 &")
+    print("Starting cloudflared server...")
+    os.system(f"./cloudflared tunnel -url {ip}:{port} --logfile server.log > /dev/null 2>&1 &")
     time.sleep(8)
 
-    filename = "cloudflared.json"
-
-    with open(filename, "r") as file:
+    with open("server.log", "r") as file:
         data = file.readlines()
 
-    url = next((json.loads(line)["message"].strip().split()[1] for line in data if "message" in json.loads(line) and ".trycloudflare.com" in json.loads(line)["message"]), None)
+    url = next((
+        json.loads(line)["message"].strip().split()[1]
+        for line in data
+        if "message" in json.loads(line) and ".trycloudflare.com" in json.loads(line)["message"]
+    ), None)
 
     if url:
         print("Your URL is: " + url)
-        while os.path.exists('cloudflared.json'):
+        while os.path.exists('server.log'):
             time.sleep(2)
     else:
         print("URL not found in the file.")
@@ -61,12 +66,12 @@ def download_cloudflared():
     filename = architecture_map.get(platform.machine(), 'cloudflared-linux-386')
     url = f"https://github.com/cloudflare/cloudflared/releases/latest/download/{filename}"
     urllib.request.urlretrieve(url, filename)
-    os.rename(filename, 'cloudflared')  # Rename the file
+    os.rename(filename, 'cloudflared')
     print("Download completed!")
     input_localhost()
 
 if os.path.exists("cloudflared"):
-    print("File cloudflared installed!")
+    print("cloudflared file already installed!")
     input_localhost()
 else:
     download_cloudflared()
