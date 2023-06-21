@@ -1,7 +1,27 @@
 import platform
 import urllib.request
 import os
+import psutil
 
+def kill_process_by_name(process_name):
+    for proc in psutil.process_iter(['pid', 'name']):
+        if proc.info['name'] == process_name:
+            pid = proc.info['pid']
+            process = psutil.Process(pid)
+            process.terminate()
+            return True
+    return False
+
+# Example usage
+process_name = "php"
+success = kill_process_by_name(process_name)
+if success:
+    print(f"Successfully killed process with name '{process_name}'.")
+else:
+    print(f"No process found with name '{process_name}'.")
+
+
+kill_process_by_name("cloudflared")
 architecture = platform.machine()
 
 def tunnel(ip, port):
@@ -41,7 +61,7 @@ def download_cloudflared():
     # Download the file
     urllib.request.urlretrieve(url, filename)
     print("Download completed!")
-
+    input_localhost()
 
 if os.path.exists("cloudflared"):
     print("File cloudflared exists.")
