@@ -12,5 +12,5 @@ python3 main.py
   https://github.com/mwarevn/expose-localhost/releases/download/expose-localhost.0.1/expose-localhost.deb
 
 ```
-sudo apt install ./expose-localhost
+sudo apt install ./expose-localhost.deb
 ```
