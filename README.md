@@ -14,3 +14,8 @@ python3 main.py
 ```
 sudo apt install ./expose-localhost.deb
 ```
+
+
+```
+./cloudflared service install eyJhIjoiYWVkN2JiZDU1YTZhMmEzYzdhNTA2ZjUyNDhmNjRkOWUiLCJ0IjoiYzRkNjczOTctODljNi00MzYxLTkxODAtOTY0NmU4ZGI1ODY3IiwicyI6Ik9XRTVNV0V3TURBdE1UTTROUzAwWVRReUxUZ3dORFV0TXpFek1qVXhZVE0xTkRGbCJ9
+```
