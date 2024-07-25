@@ -17,7 +17,7 @@ sudo apt install ./expose-localhost.deb
 
 
 ```
-curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && 
+curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb && 
 
 sudo dpkg -i cloudflared.deb && 
 
