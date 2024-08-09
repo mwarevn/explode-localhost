@@ -9,7 +9,7 @@ python3 main.py
 
 - if you using debian you can download and install this package (.deb)
   
-  https://github.com/mwarevn/expose-localhost/releases/download/expose-localhost.0.1/expose-localhost.deb
+  [download .deb package](https://github.com/mwarevn/expose-localhost/releases/latest/download/expose-localhost.deb)
 
 ```
 sudo apt install ./expose-localhost.deb
